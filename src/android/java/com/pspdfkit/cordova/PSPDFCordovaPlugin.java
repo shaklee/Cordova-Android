@@ -103,6 +103,10 @@ public class PSPDFCordovaPlugin extends CordovaPlugin {
     }
 
     private void showDocumentForUri(Uri uri) {
-        PSPDFActivity.showDocument(cordova.getActivity(), uri, new PSPDFActivityConfiguration.Builder(cordova.getActivity(), licenseKey).build());
+        PSPDFActivityConfiguration config=new PSPDFActivityConfiguration.Builder(cordova.getActivity(), licenseKey)
+                .disableOutline()
+                .disableSearch()
+                .build();
+        PSPDFActivity.showDocument(cordova.getActivity(), uri, config);
     }
 }
